@@ -2,6 +2,7 @@ package projectStart_2_6_23;
 
 public class Customer {
 
+	private int custNum;
 	private int arrivalTime;
 	private int serviceTime;
 	private int finishTime;
@@ -67,6 +68,14 @@ public class Customer {
 
 	public void setServiceStartTime(int serviceStartTime) {
 		this.serviceStartTime = serviceStartTime;
+	}
+
+	public int getCustNum() {
+		return custNum;
+	}
+
+	public void setCustNum(int custNum) {
+		this.custNum = custNum;
 	}
 	
 	
