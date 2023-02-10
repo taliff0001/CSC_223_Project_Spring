@@ -1,12 +1,12 @@
 package projectStart_2_6_23;
 
 public class CustomerCreator {
-	static double minArrival;
-	static double maxArrival;
-	static double minService;
-	static double maxService;
+	static int minArrival;
+	static int maxArrival;
+	static int minService;
+	static int maxService;
 	
-	CustomerCreator(double minA, double maxA, double minS, double maxS) {
+	CustomerCreator(int minA, int maxA, int minS, int maxS) {
 		minArrival = minA;
 		maxArrival = maxA;
 		minService = minS;
