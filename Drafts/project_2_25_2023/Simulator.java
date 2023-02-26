@@ -1,5 +1,4 @@
-package projectStart_2_6_23;
-
+package project_2_25_2023;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,7 +18,7 @@ public class Simulator {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		
+		DataCollector.checkConnect();
 		//First get parameters
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Min arrival time between customers: ");
@@ -44,6 +43,7 @@ public class Simulator {
 			Customer cust = CustomerCreator.next();
 			System.out.println(cust);
 			mainList.add(cust);
+			
 		}
 		//Create the three service lanes
 		LinkedList<Customer> A = new LinkedList<>();
@@ -73,19 +73,23 @@ public class Simulator {
 			//If lines are of equal length put in the first available line alphabetically.
 			//Record the numbers.
 			
+
 			//Check if it's time for a customer to depart
 			if(!A.isEmpty() && A.getLast().getFinishTime()==time) {
 				//remove the customer and do w/e
 				cust1 = A.pop();
+				DataCollector.logCustomer(cust1);
 				System.out.println("Customer" + cust1.getCustNum() + "finished in lane A at " + time);
 			}
 			if(!B.isEmpty() && B.getLast().getFinishTime()==time) {
 				cust1 = B.pop();
+				DataCollector.logCustomer(cust1);
 				System.out.println("Customer" + cust1.getCustNum() + "finished in lane B at " + time);
 				
 			}
 			if(!C.isEmpty() && C.getLast().getFinishTime()==time) {
 				cust1 = C.pop();
+				DataCollector.logCustomer(cust1);
 				System.out.println("Customer" + cust1.getCustNum() + "finished in lane C at " + time);
 			}
 			
@@ -114,7 +118,11 @@ public class Simulator {
 				}
 				
 				else if (A.size()<B.size() && A.size() < C.size()) {
-					A.push(cust); //And set times
+					A.push(cust); 
+					//And set times
+					//finish time is equal to finish time of customer in front of plus
+					//service time, wait time is equal to finish time of next customer
+					//minus this customer's arrival time
 					System.out.println("Customer entered lane A at " + time);
 				}
 				else if(B.size() < C.size()) {
@@ -143,7 +151,7 @@ public class Simulator {
 			System.out.println(time);
 			//DataCollector will log the status of the lines and data
 			//from customers as they leave finish and leave queues
-			DataCollector.logQueueStatus(null);
+//			DataCollector.logQueueStatus(null);
 			//Pass the data collection class the filewriter instance that was created in
 			//main along with the next customer to log
 //			DataCollector.logCustomer(cust, filewriter);								
@@ -174,3 +182,12 @@ public class Simulator {
 	
 	
 } //End class
+
+
+
+
+
+
+
+
+
